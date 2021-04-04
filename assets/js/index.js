@@ -9,6 +9,11 @@ function MyArray(){
 
 function MyArrayProto(){
 
+  /**
+   * Добавляет от 1 до n элементов в конец массива
+   * и возвращает новую длину массива
+   * @returns number
+   */
   this.push = function(){
     for(let i = 0; i < arguments.length; i++){
       this[this.length++] = arguments[i];
@@ -16,6 +21,10 @@ function MyArrayProto(){
     return this.length;
   }
 
+  /**
+   * Удаляет последний элемент из массива и возвращает его
+   * @returns 
+   */
   this.pop = function(){
     if(this.length === 0){
       return;
@@ -25,6 +34,11 @@ function MyArrayProto(){
     return lastValue;
   }
 
+  /**
+   * Вставляет от 1 до n элементов в начало массива
+   * возвращает новую длину массива
+   * @returns number
+   */
   this.unshift = function(){
     const tempArray = new MyArray();
     for(let i = 0; i < arguments.length; i++){
@@ -41,6 +55,10 @@ function MyArrayProto(){
     return this.length;
   }
 
+  /**
+   * Удаляет первый элемент массива и возвращает его
+   * @returns 
+   */
   this.shift = function(){
     if(this.length === 0){
       return;
@@ -60,6 +78,11 @@ function MyArrayProto(){
     return firstValue;
   }
 
+  /**
+   * Объединяет массив с произвольным значением(иями)
+   * и возвращает новый массив
+   * @returns MyArray
+   */
   this.concat = function(){
     const tempArray = new MyArray();
     for(let i = 0; i < this.length; i++){
@@ -77,9 +100,11 @@ function MyArrayProto(){
     return tempArray;
   }
 
+  /**
+   * Меняет порядок элементов на обратный
+   */
   this.reverse = function(){
     const middle = Math.floor(this.length / 2);
-    console.log("middle = ", middle);
     for(let i = 0; i < middle; i++){
       const temp = this[i];
       this[i] = this[this.length - i - 1];
@@ -87,12 +112,22 @@ function MyArrayProto(){
     }
   }
 
+  /**
+   * Применяет функцию callback ко всем элементам массива
+   * @param {function} callback 
+   */
   this.forEach = function(callback){
     for(let i = 0; i < this.length; i++){
       callback(this[i], i, this);
     }
   }
 
+  /**
+   * Формирует новый массив который состоит из результатов
+   * вызова функции callback ко всем элементам текущего массива
+   * @param {function} callback 
+   * @returns MyArray
+   */
   this.map = function(callback){
     const tempArray = new MyArray();
     for(let i = 0; i < this.length; i++){
@@ -100,7 +135,6 @@ function MyArrayProto(){
     }
     return tempArray;
   }
-
 }
 
 MyArray.__proto__.isMyArray = function(object){
