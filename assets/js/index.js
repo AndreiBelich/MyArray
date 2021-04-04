@@ -74,7 +74,6 @@ function MyArrayProto(){
     for(let i = 0; i < tempArray.length; i++){
       this.push(tempArray[i]);
     }
-
     return firstValue;
   }
 
